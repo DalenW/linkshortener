@@ -3,5 +3,6 @@
 CREATE TABLE links (
   id SERIAL PRIMARY KEY,
   shorttext VARCHAR,
-  hyperlink TEXT
+  hyperlink TEXT,
+  enabled BOOLEAN DEFAULT 't'
 )
