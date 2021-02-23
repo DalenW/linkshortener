@@ -26,11 +26,11 @@ impl NewLink {
 
     pub fn new(link: &str) -> NewLink {
         let shorttext: String = NewLink::generate_short();
-        let hyperlink: String = link.to_string();
+        let hyperlink: String = link.trim().to_string();
 
         mem::drop(link);
 
-        assert!(hyperlink != "");
+        assert!(!hyperlink.is_empty());
 
         NewLink { shorttext, hyperlink }
     }
