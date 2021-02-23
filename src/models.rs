@@ -3,29 +3,36 @@ use std::mem;
 use rand::{Rng, thread_rng};
 use rand::distributions::Alphanumeric;
 
+use super::schema::links;
+
 
 
 #[derive(Queryable)]
 pub struct Link {
     pub id: i32,
-    pub short: String,
+    pub shorttext: String,
     pub hyperlink: String,
 	pub enabled: bool,
 }
 
-impl Link {
+#[derive(Insertable)]
+#[table_name="links"]
+pub struct NewLink {
+    pub shorttext: String,
+    pub hyperlink: String,
+}
 
-    fn new(link: &str) -> Link {
-        let id = 0;
-        let short: String = Link::generate_short();
-        let enabled: bool = true;
+impl NewLink {
+
+    pub fn new(link: &str) -> NewLink {
+        let shorttext: String = NewLink::generate_short();
         let hyperlink: String = link.to_string();
 
         mem::drop(link);
 
         assert!(hyperlink != "");
 
-        Link { id, short, hyperlink, enabled }
+        NewLink { shorttext, hyperlink }
     }
     
     fn generate_short() -> String {

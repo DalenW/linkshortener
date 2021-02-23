@@ -1,8 +1,8 @@
 table! {
     links (id) {
         id -> Int4,
-        shorttext -> Nullable<Varchar>,
-        hyperlink -> Nullable<Text>,
-        enabled -> Nullable<Bool>,
+        shorttext -> Varchar,
+        hyperlink -> Text,
+        enabled -> Bool,
     }
 }
