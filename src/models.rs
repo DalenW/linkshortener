@@ -1,7 +1,7 @@
-use chrono::prelude::DateTime;
-use diesel::types::Timestamp;
+use diesel::{Queryable};
+use chrono::{ DateTime, Utc };
 
-use super::schema::*;
+//use super::schema::*;
 
 
 
@@ -9,7 +9,7 @@ use super::schema::*;
 pub struct ShortLink {
     pub id: String,
     pub link: String,
-    pub createdAt: Timestamp,
+    pub created_at: DateTime<Utc>,
 	pub enabled: bool,
     pub hits: i64
 }
